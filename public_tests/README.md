@@ -1,6 +1,7 @@
 # Public pytest tests for the wireless final project
 
-Copy this `public_tests/` directory into the GitHub Classroom starter repository.
+These tests are used by the teacher repository's Pull Request grading workflow.
+Students should run them locally before creating a Pull Request.
 
 Recommended student project root:
 
@@ -42,13 +43,17 @@ The tests use function discovery for module-level checks. Students are encourage
 | `src/channel.py` | `awgn`, `awgn_channel`, `add_awgn` |
 | `src/synchronization.py` | `synchronize`, `detect_frame_start`, `find_preamble` |
 
-Suggested GitHub Actions workflow:
+The teacher repository includes a GitHub Actions workflow that runs these tests
+when a student opens or updates a Pull Request.
+
+Minimal GitHub Actions workflow:
 
 ```yaml
-name: public-autograding
+name: PR public grading
 
 on:
-  push:
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
